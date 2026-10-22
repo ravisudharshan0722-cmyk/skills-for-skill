@@ -1,3 +1,4 @@
+import Link from "next/link";
 "use client";
 
 import { useState } from "react";
@@ -35,6 +36,26 @@ export default function MySkillsPage() {
           <p className="text-foreground-secondary mt-1">Manage the skills you want to teach and learn.</p>
         </div>
       </div>
+
+            {/* AI Teaching Eligibility Test Promotion Card */}
+      <Card className="border border-primary/30 bg-primary-soft/20 shadow-sm">
+        <CardContent className="p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg flex-shrink-0">
+              ★
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-foreground">Earn Verified Teaching Eligibility</h2>
+              <p className="text-xs text-foreground-secondary mt-0.5">
+                Take our 14-question AI-powered examination to earn level-specific verified teacher badges for Java, Python, JavaScript, and more.
+              </p>
+            </div>
+          </div>
+          <Button as={Link} href="/teaching-test" variant="primary" size="small" className="w-full sm:w-auto font-semibold whitespace-nowrap">
+            Take Eligibility Test
+          </Button>
+        </CardContent>
+      </Card>
 
       <div className="grid gap-8 md:grid-cols-2">
         <Card>

@@ -9,6 +9,7 @@ const workspaceLinks = [
   { href: '/dashboard', label: 'Dashboard' },
   { href: '/discover', label: 'Discover' },
   { href: '/my-skills', label: 'My Skills' },
+  { href: '/teaching-test', label: 'Teaching Test' },
   { href: '/requests', label: 'Requests' },
   { href: '/exchanges', label: 'Exchanges' },
   { href: '/messages', label: 'Messages' },

@@ -8,7 +8,8 @@ import { Badge } from "../../../../components/ui/badge";
 import { Avatar } from "../../../../components/ui/avatar";
 import { Rating } from "../../../../components/ui/rating";
 import { Modal } from "../../../../components/ui/modal";
-import { MapPin, Calendar, Clock, Globe, MessageSquare, Share2, CheckCircle2, Pencil } from "lucide-react";
+import { MapPin, Calendar, Clock, Globe, MessageSquare, Share2, CheckCircle2, Pencil, ShieldCheck, Award } from "lucide-react";
+import Link from "next/link";
 
 const AVAILABLE_LANGUAGES = [
   "English", "Tamil", "Hindi", "Telugu", "Malayalam", 
@@ -50,6 +51,20 @@ export default function ProfilePage({ params }) {
   const hasSentRequest = (requests?.sent || []).some(r => r.user?.id === user?.id && r.status === 'pending');
 
   const [activeTab, setActiveTab] = useState("overview");
+  const [verifiedEligibilities, setVerifiedEligibilities] = useState([]);
+
+  useEffect(() => {
+    if (user?.id) {
+      fetch('/api/teaching-test/eligibility?userId=' + user.id)
+        .then(r => r.json())
+        .then(data => {
+          if (data.success && Array.isArray(data.eligibilities)) {
+            setVerifiedEligibilities(data.eligibilities);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [user?.id]);
   
   // Request Modal State
   const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
@@ -324,6 +339,66 @@ export default function ProfilePage({ params }) {
                         <p className="text-sm text-foreground-secondary italic">No skills listed yet.</p>
                       )}
                     </div>
+                  </CardContent>
+                </Card>
+
+                {/* Verified Teaching Eligibility Section */}
+                <Card className="bg-surface-card border-border shadow-sm">
+                  <CardHeader className="border-b border-border pb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        <CardTitle as="h2" className="text-xl font-semibold flex items-center gap-2">
+                          <ShieldCheck className="w-5 h-5 text-success" />
+                          Verified Teaching Eligibility
+                        </CardTitle>
+                        <CardDescription className="text-sm">
+                          Verified through AI Teaching Eligibility Examinations
+                        </CardDescription>
+                      </div>
+                      {isCurrentUser && (
+                        <Button as={Link} href="/teaching-test" variant="outline" size="small" className="text-xs">
+                          Take Eligibility Test
+                        </Button>
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    {verifiedEligibilities.length > 0 ? (
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {verifiedEligibilities.map((elig) => (
+                          <div
+                            key={elig.id || (elig.language + '_' + elig.level)}
+                            className="flex items-start gap-3 p-3.5 rounded-xl border border-success/30 bg-success-soft/20 text-foreground"
+                          >
+                            <div className="w-7 h-7 rounded-full bg-success text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">
+                              ✓
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <span className="font-bold text-sm text-foreground block">
+                                {elig.language.charAt(0).toUpperCase() + elig.language.slice(1)} — {elig.level.charAt(0).toUpperCase() + elig.level.slice(1)} — Verified Eligible to Teach
+                              </span>
+                              <span className="text-xs text-foreground-muted block mt-0.5">
+                                Verified: {new Date(elig.verifiedAt).toLocaleDateString()} • Score: {elig.score}/50
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="py-6 text-center border-2 border-dashed border-border rounded-lg bg-surface">
+                        <p className="text-sm text-foreground-secondary font-medium">No verified teaching eligibility yet.</p>
+                        <p className="text-xs text-foreground-muted mt-1">
+                          Pass the AI Teaching Eligibility Test to earn verified status for specific languages and levels.
+                        </p>
+                        {isCurrentUser && (
+                          <div className="mt-4">
+                            <Button as={Link} href="/teaching-test" variant="primary" size="small">
+                              Earn Teaching Verification
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </div>

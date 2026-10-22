@@ -46,6 +46,7 @@ export async function middleware(request) {
     '/exchanges',
     '/profile',
     '/complete-profile',
+    '/teaching-test',
   ]
   const isProtected = protectedPaths.some(p => pathname.startsWith(p))
 
