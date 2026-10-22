@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '../../../../lib/supabase/server';
-import { generateAssessmentQuestions } from '../../../../lib/teaching-test/question-generator';
-import { saveStartedAssessment } from '../../../../lib/teaching-test/store';
-import { ASSESSMENT_LEVELS } from '../../../../lib/teaching-test/config';
+import { createClient } from '@/lib/supabase/server';
+import { generateAssessmentQuestions } from '@/lib/teaching-test/question-generator';
+import { saveStartedAssessment } from '@/lib/teaching-test/store';
+import { ASSESSMENT_LEVELS } from '@/lib/teaching-test/config';
 
 export async function POST(request) {
   try {

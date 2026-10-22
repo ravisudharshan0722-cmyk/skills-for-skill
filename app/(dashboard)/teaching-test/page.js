@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useUser } from '../../../lib/user-context';
-import { SUPPORTED_LANGUAGES, ASSESSMENT_LEVELS } from '../../../lib/teaching-test/config';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../../components/ui/card';
-import { Button } from '../../../components/ui/button';
-import { Badge } from '../../../components/ui/badge';
+import { useUser } from '@/lib/user-context';
+import { SUPPORTED_LANGUAGES, ASSESSMENT_LEVELS } from '@/lib/teaching-test/config';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { CheckCircle2, AlertCircle, ArrowRight, BookOpen, Clock, Award, ShieldCheck, ChevronRight } from 'lucide-react';
 
 export default function TeachingTestReadinessPage() {

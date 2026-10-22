@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { getAssessmentById, saveCompletedAssessment } from '../../../../lib/teaching-test/store';
-import { SCORING_RULES } from '../../../../lib/teaching-test/config';
-import { evaluateCodeSubmission } from '../../../../lib/teaching-test/code-executor';
-import { evaluateTeachingResponse, generateOverallAssessmentFeedback } from '../../../../lib/teaching-test/teaching-evaluator';
+import { getAssessmentById, saveCompletedAssessment } from '@/lib/teaching-test/store';
+import { SCORING_RULES } from '@/lib/teaching-test/config';
+import { evaluateCodeSubmission } from '@/lib/teaching-test/code-executor';
+import { evaluateTeachingResponse, generateOverallAssessmentFeedback } from '@/lib/teaching-test/teaching-evaluator';
 
 export async function POST(request) {
   try {

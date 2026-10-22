@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { executeCodeOnSandbox } from '../../../../lib/teaching-test/code-executor';
+import { executeCodeOnSandbox } from '@/lib/teaching-test/code-executor';
 
 export async function POST(request) {
   try {

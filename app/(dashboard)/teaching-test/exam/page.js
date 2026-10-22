@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Button } from '../../../../components/ui/button';
-import { Badge } from '../../../../components/ui/badge';
-import { Modal } from '../../../../components/ui/modal';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Modal } from '@/components/ui/modal';
 import {
   Clock, CheckCircle, HelpCircle, Bookmark, AlertTriangle,
   Play, Send, Maximize, Minimize, ChevronLeft, ChevronRight,

@@ -1,11 +1,11 @@
-import Link from "next/link";
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { useUser } from "../../../lib/user-context";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useUser } from "@/lib/user-context";
 
 export default function MySkillsPage() {
   const { currentUser, addOffer, removeOffer, addNeed, removeNeed } = useUser();

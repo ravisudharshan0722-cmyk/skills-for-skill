@@ -3,9 +3,9 @@
 import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../../../components/ui/card';
-import { Button } from '../../../../components/ui/button';
-import { Badge } from '../../../../components/ui/badge';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import {
   CheckCircle2, XCircle, Clock, Award, ShieldCheck,
   ChevronDown, ChevronUp, ArrowRight, RotateCcw, UserCheck, Code, BookOpen
